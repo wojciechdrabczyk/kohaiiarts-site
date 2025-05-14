@@ -1,5 +1,6 @@
 import * as React from "react";
 import {Popover, PopoverButton, PopoverPanel} from "@headlessui/react";
+import {Link} from "react-router-dom";
 
 function Navbar() {
     const [isOpen, setIsOpen] = React.useState(false)
@@ -10,30 +11,29 @@ function Navbar() {
                 <div className={"max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"}>
                     <div className={"flex justify-between h-16"}>
                         <div className={"flex items-center"}>
-                            <a href="#" className={"text-xl font-black text-gray-800"}>Kohaii Arts</a>
+                            <Link to="/" className={"text-xl font-black text-gray-800"}>Kohaii Arts</Link>
                         </div>
                         <div className={"hidden md:flex space-x-8 items-center"}>
-                            <a href="#" className={"text-gray-500 hover:text-gray-700"}>Illustrations</a>
+                            <Link to="/" className={"text-gray-500 hover:text-gray-700"}>Illustrations</Link>
                             <a href="https://www.inprnt.com/gallery/kohaiiarts/" className={"text-gray-500 hover:text-gray-700"}>Shop</a>
                             <Popover className="relative">
                                 <PopoverButton>Support</PopoverButton>
-                                <PopoverPanel anchor="bottom" className="flex flex-col">
+                                <PopoverPanel anchor="bottom" className="ml-4 flex flex-col space-y-1 p-2">
                                     <a href="https://www.patreon.com/KohaiiArts">Patreon</a>
                                     <a href="https://throne.com/kohaiiarts">Throne.gg</a>
                                 </PopoverPanel>
                             </Popover>
-                            <a href="/services" className={"text-gray-500 hover:text-gray-700"}>Services</a>
-                            <a href="/faq" className={"text-gray-500 hover:text-gray-700"}>FAQ</a>
-                            <a href="/contact" className={"text-gray-500 hover:text-gray-700"}>Contact</a>
+                            <Link to="/services" className={"text-gray-500 hover:text-gray-700"}>Services</Link>
                             <Popover className="relative">
                                 <PopoverButton>Socials</PopoverButton>
-                                <PopoverPanel anchor="bottom" className="flex flex-col">
+                                <PopoverPanel anchor="bottom" className="ml-4 flex flex-col space-y-1 p-2">
                                     <a href="https://x.com/KohaiiArts">Twitter / X</a>
                                     <a href="https://www.instagram.com/kohaii_arts/">Instagram</a>
                                     <a href="https://kohaiiarts.newgrounds.com/art">Newgrounds</a>
                                 </PopoverPanel>
                             </Popover>
-                            <a href="/about" className={"text-gray-500 hover:text-gray-700"}>About</a>
+                            <Link to="/faq" className={"text-gray-500 hover:text-gray-700"}>FAQ</Link>
+                            <Link to="/contact" className={"text-gray-500 hover:text-gray-700"}>Contact</Link>
                         </div>
                         <div className="flex items-center md:hidden">
                             <button
@@ -58,15 +58,32 @@ function Navbar() {
                     </div>
                 </div>
                 {isOpen && (
-                    <div className="md:hidden px-4 pb-4">
-                        <a href="#" className="block text-gray-600 py-2 hover:text-gray-800">Home</a>
-                        <a href="#" className="block text-gray-600 py-2 hover:text-gray-800">About</a>
-                        <a href="#" className="block text-gray-600 py-2 hover:text-gray-800">Services</a>
-                        <a href="#" className="block text-gray-600 py-2 hover:text-gray-800">Contact</a>
+                    <div className="md:hidden px-4 pb-4 flex flex-col space-y-2">
+                        <Link to="/" className={"text-gray-500 hover:text-gray-700"}>Illustrations</Link>
+                        <a href="https://www.inprnt.com/gallery/kohaiiarts/" className={"text-gray-500 hover:text-gray-700"}>Shop</a>
+                        <div>
+                            <p className={"text-gray-700 font-semibold"}>Support</p>
+                            <div className={"ml-4 flex flex-col space-y-1"}>
+                                <a href="https://www.patreon.com/KohaiiArts" className={"text-gray-500 hover:text-gray-700"}>Patreon</a>
+                                <a href="https://throne.com/kohaiiarts" className={"text-gray-500 hover:text-gray-700"}>Throne.gg</a>
+                            </div>
+                        </div>
+                        <Link to="/services" className={"text-gray-500 hover:text-gray-700"}>Services</Link>
+                        <div>
+                            <p className={"text-gray-700 font-semibold"}>Socials</p>
+                            <div className={"ml-4 flex flex-col space-y-1"}>
+                                <a href="https://x.com/KohaiiArts" className={"text-gray-500 hover:text-gray-700"}>Twitter / X</a>
+                                <a href="https://www.instagram.com/kohaii_arts/" className={"text-gray-500 hover:text-gray-700"}>Instagram</a>
+                                <a href="https://kohaiiarts.newgrounds.com/art" className={"text-gray-500 hover:text-gray-700"}>Newgrounds</a>
+                            </div>
+                        </div>
+                        <Link to="/faq" className={"text-gray-500 hover:text-gray-700"}>FAQ</Link>
+                        <Link to="/contact" className={"text-gray-500 hover:text-gray-700"}>Contact</Link>
                     </div>
                 )}
             </nav>
         </div>
     )
 }
+
 export default Navbar;
