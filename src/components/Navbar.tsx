@@ -1,8 +1,7 @@
 import * as React from "react";
-import {Menu, MenuButton, MenuItem, MenuItems} from "@headlessui/react";
-import {Fragment} from "react";
+import {Popover, PopoverButton, PopoverPanel} from "@headlessui/react";
 
-const Navbar = () => {
+function Navbar() {
     const [isOpen, setIsOpen] = React.useState(false)
 
     return (
@@ -11,13 +10,30 @@ const Navbar = () => {
                 <div className={"max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"}>
                     <div className={"flex justify-between h-16"}>
                         <div className={"flex items-center"}>
-                            <a href="#" className={"text-xl font-black text-gray-800"}>KohaiiArts</a>
+                            <a href="#" className={"text-xl font-black text-gray-800"}>Kohaii Arts</a>
                         </div>
                         <div className={"hidden md:flex space-x-8 items-center"}>
                             <a href="#" className={"text-gray-500 hover:text-gray-700"}>Illustrations</a>
-                            <a href="/about" className={"text-gray-500 hover:text-gray-700"}>About</a>
+                            <a href="https://www.inprnt.com/gallery/kohaiiarts/" className={"text-gray-500 hover:text-gray-700"}>Shop</a>
+                            <Popover className="relative">
+                                <PopoverButton>Support</PopoverButton>
+                                <PopoverPanel anchor="bottom" className="flex flex-col">
+                                    <a href="https://www.patreon.com/KohaiiArts">Patreon</a>
+                                    <a href="https://throne.com/kohaiiarts">Throne.gg</a>
+                                </PopoverPanel>
+                            </Popover>
                             <a href="/services" className={"text-gray-500 hover:text-gray-700"}>Services</a>
+                            <a href="/faq" className={"text-gray-500 hover:text-gray-700"}>FAQ</a>
                             <a href="/contact" className={"text-gray-500 hover:text-gray-700"}>Contact</a>
+                            <Popover className="relative">
+                                <PopoverButton>Socials</PopoverButton>
+                                <PopoverPanel anchor="bottom" className="flex flex-col">
+                                    <a href="https://x.com/KohaiiArts">Twitter / X</a>
+                                    <a href="https://www.instagram.com/kohaii_arts/">Instagram</a>
+                                    <a href="https://kohaiiarts.newgrounds.com/art">Newgrounds</a>
+                                </PopoverPanel>
+                            </Popover>
+                            <a href="/about" className={"text-gray-500 hover:text-gray-700"}>About</a>
                         </div>
                         <div className="flex items-center md:hidden">
                             <button
@@ -41,38 +57,14 @@ const Navbar = () => {
                         </div>
                     </div>
                 </div>
-                {isOpen &&
-                    (
-                        <div className={"md:hidden px-4 pb-4 space-y-1"}>
-                            <Menu as="div" className="relative">
-                                <MenuButton as={Fragment} className={"w-full text-left py-2 text-gray-600 hover:gray-800"}>
-                                    <button>My account</button>
-                                </MenuButton>
-                                <MenuItems anchor="bottom" className={"pl-4"}>
-                                    <MenuItem>
-                                        <a className="block data-focus:bg-blue-100" href="/settings">
-                                            Illustratations
-                                        </a>
-                                    </MenuItem>
-                                    <MenuItem>
-                                        <a className="block data-focus:bg-blue-100" href="/support">
-                                            About
-                                        </a>
-                                    </MenuItem>
-                                    <MenuItem>
-                                        <a className="block data-focus:bg-blue-100" href="/license">
-                                            Services
-                                        </a>
-                                    </MenuItem>
-                                    <MenuItem>
-                                        <a className="block data-focus:bg-blue-100" href="/license">
-                                            Contact
-                                        </a>
-                                    </MenuItem>
-                                </MenuItems>
-                            </Menu>
-                        </div>
-                    )}
+                {isOpen && (
+                    <div className="md:hidden px-4 pb-4">
+                        <a href="#" className="block text-gray-600 py-2 hover:text-gray-800">Home</a>
+                        <a href="#" className="block text-gray-600 py-2 hover:text-gray-800">About</a>
+                        <a href="#" className="block text-gray-600 py-2 hover:text-gray-800">Services</a>
+                        <a href="#" className="block text-gray-600 py-2 hover:text-gray-800">Contact</a>
+                    </div>
+                )}
             </nav>
         </div>
     )
